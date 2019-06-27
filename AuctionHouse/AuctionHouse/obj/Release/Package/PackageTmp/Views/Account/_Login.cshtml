@@ -1,0 +1,31 @@
+﻿@model AuctionHouse.Models.ViewModels.LoginViewModel
+
+@using (Ajax.BeginForm("Login", "Account", new AjaxOptions
+{
+    OnSuccess = "onSuccessLogin",
+    OnFailure = "onFailure",
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "header"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="login" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('login')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email)
+
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password)
+                
+                <button type="submit">Login</button>
+            </div>
+        </div>
+    </div>
+}

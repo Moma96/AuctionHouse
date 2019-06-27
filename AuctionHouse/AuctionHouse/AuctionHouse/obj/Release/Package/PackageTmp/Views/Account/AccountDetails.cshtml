@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Account Details";
+    var user = ViewBag.User;
+}
+
+<div id="account-details" class="row">
+    <div class="col-sm-12" style="text-align:center;">
+        <h1>@user.User.first_name @user.User.last_name</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align:center;">
+        <h4>@user.User.email</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" style="text-align:center;">
+        <h3>Balance: @user.User.tokens_amount</h3>
+        <h3>Available: @user.User.available_tokens</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-4 details-column">
+        <h1>My Token Orders</h1>
+        <table>
+            <tr>
+                <th>amount</th>
+                <th>price</th>
+                <th>state</th>
+            </tr>
+        </table>
+        <div class="list-table">
+            <table>
+                @foreach (var token_order in user.TokenOrders)
+                {
+                    <tr>
+                        <td>@token_order.amount</td>
+                        <td>@token_order.price</td>
+                        <td>@token_order.state</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="row">
+            <button type='button' class='btn-info' onclick="showPanel('change-password')">
+                CHANGE PASSWORD
+            </button>
+        </div>
+        @Html.Partial("~/Views/Account/_ChangePassword.cshtml", new AuctionHouse.Models.ViewModels.ChangePasswordViewModel())
+        <div class="row">
+            <button type='button' class='btn-info' onclick="showPanel('change-name')">
+                CHANGE NAME
+            </button>
+        </div>
+        @Html.Partial("~/Views/Account/_ChangeName.cshtml", new AuctionHouse.Models.ViewModels.ChangeNameViewModel())
+
+        @if (user.User.is_administrator == 1)
+        {
+            <div class="row">
+                <button type='button' class='btn-info' onclick="showPanel('change-name')">
+                    EDIT SYSTEM PARAMETERS
+            </div>
+           //Html.Partial("~/Views/Account/_ChangeName.cshtml", new AuctionHouse.Models.ViewModels.ChangeNameViewModel())
+        }
+    </div>
+    <div class="col-sm-4 details-column">
+        <h1>My Bids</h1>
+        <table>
+            <tr>
+                <th>auction_name</th>
+                <th>created</th>
+                <th>amount</th>
+            </tr>
+        </table>
+        <div class="list-table">
+            <table>
+                @foreach (var bid in user.Bids)
+                {
+                    <tr>
+                        <td>@bid.auction_name</td>
+                        <td>@bid.created</td>
+                        <td>@bid.amount</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

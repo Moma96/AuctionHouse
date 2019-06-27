@@ -1,0 +1,9 @@
+﻿@using (Ajax.BeginForm("Logout", "Account", null, new AjaxOptions
+{
+    OnSuccess = "onSuccessLogout",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "header"
+}, new { @class = "nav-form" }))
+{
+    <input type="submit" class="button-link nav-link" value="Log out" />
+}

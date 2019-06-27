@@ -1,0 +1,60 @@
+﻿@{
+    var user = (AuctionHouse.Models.DisplayModels.PartialUser)Session["user"];
+}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding:10px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.Partial("~/Views/Auction/_Bid.cshtml", new AuctionHouse.Models.ViewModels.BidViewModel())
+                @if (user != null)
+                {
+                    <div class="navbar-nav links">
+                        <a class="nav-link" onclick="showPanel('order-tokens')">Order tokens</a>
+                        @Html.Partial("~/Views/Account/_OrderTokens.cshtml", new AuctionHouse.Models.ViewModels.OrderTokensViewModel())
+                        <!--<a class="nav-link" href="#">Bid history</a>-->
+                        <!--<a class="nav-link" href="Url.Action("CreateAuction", "Auction")">Create auction</a>-->
+                        <a class="nav-link" onclick="showPanel('create-auction')">Create auction</a>
+                        @Html.Partial("~/Views/Auction/_CreateAuction.cshtml", new AuctionHouse.Models.ViewModels.CreateAuctionViewModel())
+                        <!--Html.Partial("~/Views/Auction/_Bid.cshtml", new AuctionHouse.Models.BidViewModel())-->
+                        @Html.Partial("~/Views/Account/_Logout.cshtml")
+                    </div>
+                }
+            </div>
+            <div class="col-sm-6" id="auctions-button-wrapper">
+                <button id="auctions-button" type="button" class="btn btn-info" onclick="location.href='@Url.Action("Index", "Auction")'">
+                    <div id="auctions-button-text">
+                        AUCTIONS
+                    </div>
+                </button>
+            </div>
+            <div class="col-sm-3" id="user-wrapper user-box">
+                @if (user != null)
+                {
+                    <div class="container">
+                        <!--id="user-box">-->
+                        <div class="row" onclick="accountDetails()">
+                            <div class="col-sm-9" style="padding-right: 0">
+                                <a id="user-link" class="nav-link" href="#">@user.first_name @user.last_name </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-dark btn-sm" id="user-icon">
+                                    <img src="../images/user.png" alt="User" style="width:30px;">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="navbar-nav links">
+                        <a class="nav-link" onclick="showPanel('register')">Register</a>
+                        @Html.Partial("~/Views/Account/_Register.cshtml", new AuctionHouse.Models.ViewModels.RegisterViewModel())
+                        <a class="nav-link" onclick="showPanel('login')">Log in</a>
+                        @Html.Partial("~/Views/Account/_Login.cshtml", new AuctionHouse.Models.ViewModels.LoginViewModel())
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</nav>

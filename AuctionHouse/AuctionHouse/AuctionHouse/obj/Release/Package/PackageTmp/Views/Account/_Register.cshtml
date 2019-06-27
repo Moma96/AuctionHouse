@@ -1,0 +1,35 @@
+﻿@model AuctionHouse.Models.ViewModels.RegisterViewModel
+
+@using (Ajax.BeginForm("Register", "Account", new AjaxOptions
+{
+    OnSuccess = "onSuccessRegister",
+    OnFailure = "onFailure",
+    HttpMethod = "POST"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="register" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('register')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email)
+
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password)
+
+                @Html.LabelFor(model => model.First_name)
+                @Html.EditorFor(model => model.First_name)
+
+                @Html.LabelFor(model => model.Last_name)
+                @Html.EditorFor(model => model.Last_name)
+
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </div>
+}

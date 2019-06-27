@@ -1,0 +1,285 @@
+form {
+    margin: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+input {
+    border: 0 solid;
+}
+
+.row {
+    width: 100%;
+    margin: 0;
+}
+
+.container-fluid, .col-sm-12 {
+    padding: 0;
+}
+
+#auctions-button-wrapper {
+    text-align: center;
+}
+
+#auctions-button {
+    width: 350px;
+    height: 49px;
+    border-radius: 20px;
+}
+
+#auctions-button-text {
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom: 3px;
+    letter-spacing: 2px;
+}
+
+#links {
+    text-align: left;
+}
+
+#user-link {
+    text-align: right;
+    padding-right: 0;
+}
+
+.links .nav-link, #user-link {
+    font-size: 20px;
+    color: #DCDCDC;
+}
+
+.links .nav-link {
+    padding-right: 30px;
+}
+
+    .links .nav-link:hover, #user-link:hover {
+        color: white;
+    }
+
+#user-wrapper {
+    padding-right: 50px;
+}
+
+#user-box {
+    width: 200px;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#user-icon {
+    margin-top: 5px;
+    width: 50px;
+    height: 35px;
+}
+
+#search-bar {
+    min-height: 46px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #77DDEE;
+}
+
+#search-bar-box .container .row .col-sm-11, #search-bar-box .container .row .col-sm-1 {
+    padding: 0;
+}
+
+#search-button {
+    width: 50px;
+    height: 38px;
+    border-radius: 0 20px 20px 0;
+}
+
+#search-input, .filter, /*PAZI PAZI PAZI PAZI*/ .input-bar {
+    color: #17A2B8;
+    width: 100%;
+    height: 38px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#search-input {
+    border-radius: 20px 0 0 20px;
+    border-left: 1px solid #17A2B8;
+    border-bottom: 1px solid #17A2B8;
+    border-top: 1px solid #17A2B8;
+}
+
+.filter, /*PAZI PAZI PAZI PAZI*/ .input-bar {
+    border-radius: 20px;
+    border: 1px solid #17A2B8;
+}
+
+
+.content {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#items {
+    padding-bottom: 15px;
+}
+
+.item {
+    margin: 10px;
+    padding: 10px;
+    height: 500px;
+    width: 300px;
+    border-radius: 20px;
+    display: inline-block
+}
+
+.opened.item {
+    border: 1px solid #77DDEE;
+    box-shadow: 5px 5px #77DDEE;
+}
+
+.ready.item {
+    border: 1px solid #5CB85C;
+    box-shadow: 5px 5px #5CB85C;
+}
+
+.completed.item {
+    border: 1px solid #D9534F;
+    box-shadow: 5px 5px #D9534F;
+}
+
+.item:hover {
+    box-shadow: none;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.item-name {
+    text-align: center;
+    height: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.item-text {
+    height: 100%;
+    width: 100%;
+}
+
+.opened .item-name {
+    border-bottom: 1px solid #77DDEE;
+}
+
+.ready .item-name {
+    border-bottom: 1px solid #5CB85C;
+}
+
+.completed .item-name {
+    border-bottom: 1px solid #D9534F;
+}
+
+.item-image {
+    text-align: center;
+    height: 180px;
+}
+
+.item-timer {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.item-bidding {
+    text-align: center;
+    font-size: 20px;
+}
+
+.item-bidded-amount {
+    color: green;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.item-bid-button {
+    margin: 10px;
+    width: 200px;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+ul.item-pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+    ul.item-pagination li {
+        display: inline;
+    }
+
+        ul.item-pagination li button {
+            color: #17A2B8;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+            ul.item-pagination li button.active {
+                background-color: #17A2B8;
+                color: white;
+            }
+
+            ul.item-pagination li button:hover:not(.active) {
+                background-color: #77ddee;
+            }
+
+#footer {
+    text-align: left;
+    padding-top: 30px;
+    padding-left: 20px;
+    border-top: 1px solid #77DDEE;
+    font-size: 12px;
+}
+
+.text-danger {
+    color: red;
+}
+
+.button-link {
+    align-items: normal;
+    background-color: rgba(0,0,0,0);
+    border-color: rgb(0, 0, 238);
+    border-style: none;
+    box-sizing: content-box;
+    color: rgb(0, 0, 238);
+    cursor: pointer;
+    display: inline;
+    font: inherit;
+    height: auto;
+    padding: 8px;
+    perspective-origin: 0 0;
+    text-align: start;
+    transform-origin: 0 0;
+    width: auto;
+    -moz-appearance: none;
+    -webkit-logical-height: 1em; /* Chrome ignores auto, so we have to use this hack to set the correct height  */
+    -webkit-logical-width: auto; /* Chrome ignores auto, but here for completeness */
+}
+
+/* Mozilla uses a pseudo-element to show focus on buttons, */
+/* but anchors are highlighted via the focus pseudo-class. */
+
+@supports (-moz-appearance:none) { /* Mozilla-only */
+    .button-link::-moz-focus-inner { /* reset any predefined properties */
+        border: none;
+        padding: 0;
+    }
+}
+
+.nav-form {
+    padding: 0;
+    margin: 0;
+}

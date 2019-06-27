@@ -1,0 +1,45 @@
+﻿@model AuctionHouse.Models.ViewModels.CreateAuctionViewModel
+
+@using (Html.BeginForm("CreateAuction", "Auction", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="create-auction" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('create-auction')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name)
+
+                @Html.LabelFor(model => model.Description)
+                @Html.TextBoxFor(model => model.Description)
+
+                Enter duration
+                <br />
+                @Html.LabelFor(model => model.Days)
+                @Html.TextBoxFor(model => model.Days, new { style = "width:100px;" })
+
+                @Html.LabelFor(model => model.HH)
+                @Html.TextBoxFor(model => model.HH, new { maxlength = 2, style = "width:60px;" })
+
+                @Html.LabelFor(model => model.MM)
+                @Html.TextBoxFor(model => model.MM, new { maxlength = 2, style = "width:60px;" })
+
+                @Html.LabelFor(model => model.SS)
+                @Html.TextBoxFor(model => model.SS, new { maxlength = 2, style = "width:60px;" })
+                <br />
+
+                @Html.LabelFor(model => model.Starting_price)
+                @Html.TextBoxFor(model => model.Starting_price)
+
+                @Html.LabelFor(model => model.Image)
+                @Html.TextBoxFor(model => model.Image, new { @type = "file" })
+                <br />
+
+                <button type="submit">Create</button>
+            </div>
+        </div>
+    </div>
+}

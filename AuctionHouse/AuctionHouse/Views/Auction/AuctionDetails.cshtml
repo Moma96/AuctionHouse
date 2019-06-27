@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Auction Details";
+    var auction = ViewBag.Auction;
+    string id = auction.Auction.id.ToString();
+    string src = "../images/" + id + ".png";
+}
+
+<div class="row">
+    <div class="col-sm-6" style="text-align:center;">
+        <div id="@id" class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12" style="padding: 20px;">
+                    <h1>@auction.Auction.name</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding: 10px;">
+                    <h4>Owner: @auction.Auction.owner</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="text-align:center;">
+                    <h3>Created: @auction.Auction.created</h3>
+                </div>
+            </div>
+
+            @if (auction.Auction.opened != null)
+            {
+                <div class="row">
+                    <div class="col-sm-12" style="text-align:center;">
+                        <h3>Opened: @auction.Auction.opened</h3>
+                    </div>
+                </div>
+            }
+
+            @if (auction.Auction.closed != null)
+            {
+                <div class="row">
+                    <div class="col-sm-12" style="text-align:center;">
+                        <h3>Closed: @auction.Auction.closed</h3>
+                    </div>
+                </div>
+            }
+
+            @if (auction.Auction.won != null)
+            {
+                <div class="row">
+                    <div class="col-sm-12" style="text-align:center;">
+                        <h3>Won: @auction.Auction.won</h3>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-sm-12" style="text-align:center;">
+                    <h3>Description:</h3>
+                    <div style="width: 400px; margin: auto;">
+                        <h3>@auction.Auction.description</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-12" style="text-align:center; padding: 30px;">
+                    <img src="@src" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6" style="text-align:center;">
+        <div class="row" style="height: 100%;">
+            <div class="col-sm-12 details-column" style="padding-right: 50px; height: 100%;">
+                <div style="padding: 20px" ;>
+                    <h1>All Bids</h1>
+                </div>
+                <table>
+                    <tr>
+                        <th>bidder</th>
+                        <th>amount</th>
+                        <th>created</th>
+                    </tr>
+                </table>
+                <div id="auction-bids" class="list-table" style="height: 600px; padding-bottom: 50px;">
+                    <table>
+                        @foreach (var bid in auction.Bids)
+                        {
+                            <tr>
+                                <td>@bid.bidder</td>
+                                <td>@bid.amount</td>
+                                <td>@bid.created</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

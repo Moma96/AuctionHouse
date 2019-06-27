@@ -1,0 +1,24 @@
+﻿@model AuctionHouse.Models.ViewModels.ChangeNameViewModel
+
+@using (Html.BeginForm("ChangeName", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div id="change-name" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('change-name')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.LabelFor(model => model.New_first_name)
+                @Html.TextBoxFor(model => model.New_first_name)
+
+                @Html.LabelFor(model => model.New_last_name)
+                @Html.TextBoxFor(model => model.New_last_name)
+
+                <button type="submit">Change name</button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,30 @@
+﻿@model AuctionHouse.Models.ViewModels.BidViewModel
+
+@using (Ajax.BeginForm("Bid", "Auction", new AjaxOptions
+{
+    OnSuccess = "onSuccessBid",
+    OnFailure = "onFailureBid",
+    HttpMethod = "POST"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="bid" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('bid')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                <div class="secret">
+                    @Html.TextBoxFor(model => model.Auction_id)
+                </div>
+
+                @Html.LabelFor(model => model.Amount)
+                @Html.TextBoxFor(model => model.Amount)
+                <button type="submit">Bid</button>
+            </div>
+            
+        </div>
+    </div>
+}

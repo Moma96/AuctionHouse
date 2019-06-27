@@ -1,0 +1,41 @@
+﻿@model AuctionHouse.Models.ViewModels.SearchAuctionsViewModel
+
+@using (Ajax.BeginForm("SearchAuctions", "Auction",
+   new AjaxOptions
+   {
+       OnSuccess = "onSuccessSearch",
+       HttpMethod = "GET"
+   }))
+{
+    <div class="row" id="search-bar">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-4">
+            <div id="search-bar-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            @Html.TextBoxFor(model => model.Regex, new { @id = "search-input", @placeholder = Html.DisplayNameFor(model => model.Regex) })
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-warning btn-sm" id="search-button">
+                                <img src="../images/magnifier.png" alt="Magnifier" style="width:20px;">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(model => model.Max_price, new { @class = "filter", @placeholder = Html.DisplayNameFor(model => model.Max_price) })
+        </div>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(model => model.Min_price, new { @class = "filter", @placeholder = Html.DisplayNameFor(model => model.Min_price) })
+        </div>
+        <div class="col-sm-2">
+            @Html.EnumDropDownListFor(model => model.Filter, "All auctions...", new { @class = "filter" })
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+}

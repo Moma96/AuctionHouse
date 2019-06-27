@@ -1,0 +1,44 @@
+﻿@model AuctionHouse.Models.ViewModels.SystemParametersViewModel
+
+@using (Ajax.BeginForm("EditSystemParameters", "Administrator", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "onSuccessParameterChange",
+    OnFailure = "onFailure"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="edit-parameters" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('edit-parameters')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.LabelFor(model => model.N)
+                @Html.TextBoxFor(model => model.N)
+
+                @Html.LabelFor(model => model.D)
+                @Html.TextBoxFor(model => model.D)
+
+                @Html.LabelFor(model => model.S)
+                @Html.TextBoxFor(model => model.S)
+
+                @Html.LabelFor(model => model.G)
+                @Html.TextBoxFor(model => model.G)
+
+                @Html.LabelFor(model => model.P)
+                @Html.TextBoxFor(model => model.P)
+
+                @Html.LabelFor(model => model.C)
+                @Html.TextBoxFor(model => model.C)
+
+                @Html.LabelFor(model => model.T)
+                @Html.TextBoxFor(model => model.T)
+
+                <button type="submit">Edit</button>
+            </div>
+        </div>
+    </div>
+}

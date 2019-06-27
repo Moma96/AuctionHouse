@@ -1,0 +1,47 @@
+﻿@model AuctionHouse.Models.ViewModels.OrderTokensViewModel
+
+@using (Ajax.BeginForm("OrderTokens", "Account", new AjaxOptions
+{
+    OnSuccess = "onSuccessOrder",
+    OnFailure = "onFailure",
+    HttpMethod = "POST"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="order-tokens" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('order-tokens')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.Label("Select package:")
+                <br />
+
+                <div style="padding: 10px">
+                    @Html.RadioButtonFor(model => model.Package, AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.SILVER)
+                    @Html.Label(AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.SILVER.ToString()):
+                    @Html.Label(Model.SILVER.ToString())
+                </div>
+
+                <div style="padding: 10px">
+                    @Html.RadioButtonFor(model => model.Package, AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.GOLD)
+                    @Html.Label(AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.GOLD.ToString()):
+                    @Html.Label(Model.GOLD.ToString())
+                </div>
+
+                <div style="padding: 10px">
+                    @Html.RadioButtonFor(model => model.Package, AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.PLATINUM)
+                    @Html.Label(AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum.PLATINUM.ToString()):
+                    @Html.Label(Model.PLATINUM.ToString())
+                </div>
+
+                <br />
+                <button type="submit">Order tokens</button>
+            </div>
+
+        </div>
+    </div>
+}
+

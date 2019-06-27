@@ -1,0 +1,37 @@
+﻿@model AuctionHouse.Models.ViewModels.OrderTokensViewModel
+
+@using (Ajax.BeginForm("OrderTokens", "Account", new AjaxOptions
+{
+    OnSuccess = "onSuccessOrder",
+    OnFailure = "onFailure",
+    HttpMethod = "POST"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div id="order-tokens" class="modal">
+        <div class="modal-content">
+            <div class="close-button-container">
+                <span onclick="closePanel('order-tokens')" class="close" title="Close Modal">&times;</span>
+            </div>
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="container">
+
+                @Html.Label("Select package:")
+                <br />
+                @foreach (var value in Enum.GetValues(typeof(AuctionHouse.Models.ViewModels.OrderTokensViewModel.PackageEnum)))
+                {
+                    var int_value = (int)value;
+                    <div style="padding: 10px">
+                        @Html.RadioButtonFor(model => model.Package, value)
+                        @Html.Label(value.ToString()):
+                        @Html.Label(int_value.ToString())
+                    </div>
+                }
+                <br />
+                <button type="submit">Order tokens</button>
+            </div>
+
+        </div>
+    </div>
+}
+
